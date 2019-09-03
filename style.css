@@ -52,6 +52,12 @@ body {
 	margin: 0 auto;
 }
 
+.content {
+	box-shadow: 0 0 2px 1px #ddd;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .footer {
 	background: black;
 	color: white;
