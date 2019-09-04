@@ -58,6 +58,22 @@ body {
 	margin-bottom: 10px;
 }
 
+.result {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+}
+
+.result__number-info {
+ grid-column: 1/4;
+ text-align: center;
+}
+
+.result__element-description {
+	padding: 10px;
+	border: 2px solid #ddd;
+} 
+
 .footer {
 	background: black;
 	color: white;

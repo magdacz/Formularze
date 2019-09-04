@@ -43,19 +43,18 @@ const searchElements = (e, nameElement) => {
 	const elements = document.querySelectorAll(nameElement);
 	console.log(elements);
 	if(elements.length) {
-		infoElement.innerHTML =`<p class='result__info'>Ilość znalezionych w dokumencie elementów ${nameElement}: <strong> ${elements.length}</strong></p>`;
+		infoElement.innerHTML =`<p class='result__number-info'>Ilość znalezionych w dokumencie elementów ${nameElement}: <strong> ${elements.length}</strong></p>`;
 		showInfo(elements, infoElement);
 	} else {
-		infoElement.innerHTML = `<p class='result__info'>W tym dokumencie nie znalazłem żadnych elementów ${nameElement}</p>`;
+		infoElement.innerHTML = `<p class='result__number-info'>W tym dokumencie nie znalazłem żadnych elementów ${nameElement}</p>`;
 		return;
 	}
 }
 
 const showInfo = (elements, infoElement) => {
-	console.log(elements, infoElement);
 	elements.forEach(element => {
 		const item = document.createElement('div');
-		item.className = 'element-info';
+		item.className = 'result__element-description';
 		item.innerHTML = `
 		<div>${element.nodeName}</div>
 		<div>Klasa/klasy: ${element.className}</div>
