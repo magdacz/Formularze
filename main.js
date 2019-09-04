@@ -33,3 +33,40 @@ addForm.addEventListener('submit',(e) => addElement(
 	addForm.elements.attr.value,
 	addForm.elements.value.value,
 ));
+
+const searchForm = document.querySelector('.form--search');
+
+const searchElements = (e, nameElement) => {
+	e.preventDefault();
+	const infoElement = document.querySelector('.result');
+	infoElement.textContent= '';
+	const elements = document.querySelectorAll(nameElement);
+	console.log(elements);
+	if(elements.length) {
+		infoElement.innerHTML =`<p class='result__info'>Ilość znalezionych w dokumencie elementów ${nameElement}: <strong> ${elements.length}</strong></p>`;
+		showInfo(elements, infoElement);
+	} else {
+		infoElement.innerHTML = `<p class='result__info'>W tym dokumencie nie znalazłem żadnych elementów ${nameElement}</p>`;
+		return;
+	}
+}
+
+const showInfo = (elements, infoElement) => {
+	console.log(elements, infoElement);
+	elements.forEach(element => {
+		const item = document.createElement('div');
+		item.className = 'element-info';
+		item.innerHTML = `
+		<div>${element.nodeName}</div>
+		<div>Klasa/klasy: ${element.className}</div>
+		<div>Wysokość elementu: ${element.offsetHeight}</div>
+		<div>Szerokość elementu: ${element.offsetWidth}</div>
+		<div>Odległość od lewej krawędzi: ${element.offsetLeft}</div>
+		<div>Odległośc od górnej krawędzi: ${element.offsetTop}</div>
+		<div>Liczba elemntów dzieci: ${element.childElementCount}</div>
+		`;
+		infoElement.appendChild(item);
+	})
+}
+
+searchForm.addEventListener('submit',(e) => searchElements(e, searchForm.elements['searching-element'].value));
